@@ -1,57 +1,5 @@
 # depslib dependency file v1.0
-1474399799 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2\main.c
-	<windows.h>
-	"GL/glut.h"
-	"utilgl.h"
-	"Object.h"
-
-1474399725 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2\utilgl.h
-	<stdio.h>
-
-1474399788 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2\include\object.h
-
-1474399845 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2\src\object.cpp
-	"Object.h"
-	"GL/gl.h"
-
-1474417356 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\OpenGLAula2\main.c
-	<windows.h>
-	"GL/glut.h"
-	"3DObject.h"
-	<vector>
-	<stdlib.h>
-	"glutil.h"
-
-1474399725 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\OpenGLAula2\utilgl.h
-	<stdio.h>
-
-1474417328 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\OpenGLAula2\include\3dobject.h
-
-1474414748 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\OpenGLAula2\src\3dobject.cpp
-	"3dObject.h"
-	"GL/gl.h"
-
-1474417179 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\OpenGLAula2\glutil.h
-	<stdio.h>
-
-1474417356 source:c:\users\denni\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\OpenGLAula2\main.c
-	<windows.h>
-	"GL/glut.h"
-	"3DObject.h"
-	<vector>
-	<stdlib.h>
-	"glutil.h"
-
-1474417328 c:\users\denni\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\OpenGLAula2\include\3dobject.h
-
-1474417179 c:\users\denni\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\OpenGLAula2\glutil.h
-	<stdio.h>
-
-1474728244 source:c:\users\denni\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\OpenGLAula2\src\3dobject.cpp
-	"3dObject.h"
-	"GL/gl.h"
-
-1475022436 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\main.c
+1475022436 source:..\..\main.c
 	<windows.h>
 	"GL/glut.h"
 	"3DObject.h"
@@ -60,19 +8,30 @@
 	"glutil.h"
 	"ModelObj3d.h"
 
-1474417328 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\include\3dobject.h
-
-1474417179 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\glutil.h
+1474399725 ..\..\utilgl.h
 	<stdio.h>
 
-1474728244 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\src\3dobject.cpp
+1474399788 ..\..\include\object.h
+
+1474399845 source:..\..\src\object.cpp
+	"Object.h"
+	"GL/gl.h"
+
+1474417328 ..\..\include\3dobject.h
+
+1474728244 source:..\..\src\3dobject.cpp
+	"3dObject.h"
+	"GL/gl.h"
 	"3dObject.h"
 	"GL/gl.h"
 
-1475022222 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\src\modelobj3d.cpp
+1474417179 ..\..\glutil.h
+	<stdio.h>
+
+1475022222 source:..\..\src\modelobj3d.cpp
 	"ModelObj3d.h"
 
-1475020941 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\include\modelobj3d.h
+1475020941 ..\..\include\modelobj3d.h
 	<stdio.h>
 	<cstdlib>
 	<iostream>

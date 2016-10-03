@@ -72,13 +72,13 @@ void display()
     glPopMatrix();
         glPushMatrix();
         glBindTexture(GL_TEXTURE_2D, tex_tanque);
-        glTranslatef(1,0,0);
+        glTranslatef(2,0,0);
         glScalef(0.01f,0.01f,0.01f);
         objfile->draw();
     glPopMatrix();
         glPushMatrix();
         glBindTexture(GL_TEXTURE_2D, tex_tanque);
-        glTranslatef(0,1,0);
+        glTranslatef(0,1.5f,0);
         glScalef(0.01f,0.01f,0.01f);
         objfile->draw();
     glPopMatrix();
