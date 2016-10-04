@@ -74,7 +74,7 @@ void display()
         glBindTexture(GL_TEXTURE_2D, tex_tanque);
         glTranslatef(2,0,0);
         glScalef(0.01f,0.01f,0.01f);
-        objfile->draw();
+        objfile->draw2();
     glPopMatrix();
         glPushMatrix();
         glBindTexture(GL_TEXTURE_2D, tex_tanque);
@@ -108,7 +108,7 @@ void init()
 
     glClearColor(0.000, 0.0, 0.0, 0.0);
 
-    glColor3f(0.314, 0.314, 0.000);
+    glColor3f(0.300, 0.314, 0.000);
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();

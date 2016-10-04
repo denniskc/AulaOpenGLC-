@@ -55,6 +55,7 @@ class ModelObj3d
         void decodeFace(std::string str);
 
         void draw();
+        void draw2();
 
     protected:
 

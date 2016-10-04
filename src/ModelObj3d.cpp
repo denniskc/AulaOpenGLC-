@@ -180,6 +180,31 @@ void ModelObj3d::draw(){
     }
 }
 
+void ModelObj3d::draw2(){
+
+    glDisable(GL_TEXTURE_2D);
+    glEnable(GL_COLOR);
+    glColor3f(0,1,0);
+
+    for(std::vector<Face3D>::iterator it = f.begin(); it != f.end(); ++it) {
+        Face3D ff = (*it);
+
+
+        glBegin(GL_POLYGON);
+            for(int i = 0; i < ff.nvertices; i++){
+                Vector3f vv = v.at(ff.v[i]-1);
+                Vector3f nn = vn.at(ff.n[i]-1);
+                Vector3f tt = vt.at(ff.t[i]-1);
+
+                glNormal3f(nn.v[0], nn.v[1], nn.v[2]);
+                //std::cout << "t " << tt.v[0] << " " << tt.v[1] << " " << (ff.t[i]-1) << std::endl;
+                glTexCoord2f(tt.v[0], tt.v[1]);
+                glVertex3f(vv.v[0], vv.v[1], vv.v[2]);
+            }
+        glEnd();
+    }
+}
+
 std::string *ModelObj3d::splitchar(std::string input,char spchar, int *rsize){
     int coutchar = 0;
     int lastchar = -1;

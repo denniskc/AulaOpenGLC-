@@ -41,3 +41,34 @@
 	"3dObject.h"
 	"GL/gl.h"
 
+1474728244 source:..\..\src\3dobject.cpp
+	"3dObject.h"
+	"GL/gl.h"
+
+1474417328 ..\..\include\3dobject.h
+
+1475620427 source:..\..\main.c
+	<windows.h>
+	"GL/glut.h"
+	"3DObject.h"
+	<vector>
+	<stdlib.h>
+	"glutil.h"
+	"ModelObj3d.h"
+
+1474417179 ..\..\glutil.h
+	<stdio.h>
+
+1475620427 ..\..\include\modelobj3d.h
+	<stdio.h>
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<vector>
+	<string>
+	"3dObject.h"
+	"GL/gl.h"
+
+1475620427 source:..\..\src\modelobj3d.cpp
+	"ModelObj3d.h"
+
