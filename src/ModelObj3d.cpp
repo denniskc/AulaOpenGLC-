@@ -83,7 +83,7 @@ void ModelObj3d::decodeNormais(std::string str){
 
         vn.push_back(vec);
 
-        //std::cout << " Normais "<<vec.v[0] << " " << vec.v[1] << " " << vec.v[2] << std::endl;
+        std::cout << " Normais "<<vec.v[0] << " " << vec.v[1] << " " << vec.v[2] << std::endl;
     }
 }
 
@@ -109,7 +109,7 @@ void ModelObj3d::decodeFace(std::string str){
 
     //std::cout << "FACE" << rsize <<std::endl;
     if(rsize==5){
-        std::cout << "FACE 3" << std::endl;
+        //std::cout << "FACE 3" << std::endl;
         Face3D ff;
         ff.nvertices = 3;
 
@@ -129,7 +129,7 @@ void ModelObj3d::decodeFace(std::string str){
 
         //std::cout << " Texturas "<< vec.v[0] << " " << vec.v[1] << " " << vec.v[2] << std::endl;
     }else if(rsize==6){
-        std::cout << "FACE 4" << std::endl;
+        //std::cout << "FACE 4" << std::endl;
         Face3D ff;
         ff.nvertices = 4;
 
@@ -166,16 +166,7 @@ void ModelObj3d::draw(){
                 glTexCoord2f(tt.v[0], tt.v[1]);
                 glVertex3f(vv.v[0], vv.v[1], vv.v[2]);
             }
-        /*
-            glColor3f(1,0,0);
-            glVertex3f(-0.5, -0.5, 1.5);
-            glColor3f(1,0,0);
-            glVertex3f(-0.5,  0.5, 0.6);
-            glColor3f(1,0,0);
-            glVertex3f(0.5,  0.5, 1.5);
-            glColor3f(1,0,0);
-            glVertex3f(0.5, -0.5, 0.6);
-            */
+
         glEnd();
     }
 }
