@@ -15,15 +15,18 @@ float ang = 0;
 std::vector<gl3dObject *> listaDeObjetos;
 ModelObj3d *objfile;
 
+float luzX,luzY,luzZ;
+
 void setMaterial(){
     float f[4];
     f[0] = 0.2; f[1] = 0.2; f[2] = 0.2; f[3] = 1;
     glMaterialfv (GL_FRONT, GL_AMBIENT, f);
     f[0] = 0.8; f[1] = 0.8; f[2] = 0.8; f[3] = 1;
     glMaterialfv (GL_FRONT, GL_DIFFUSE, f);
-    f[0] = 0.2;     f[1] = 0.2; f[2] = 0.2; f[3] = 1;
+    f[0] = 0.8;     f[1] = 0.8; f[2] = 0.8; f[3] = 1;
     glMaterialfv (GL_FRONT, GL_SPECULAR, f);
-    f[0] = 10;     f[1] = 0.2; f[2] = 0.2; f[3] = 1;
+
+    f[0] = 100;     f[1] = 0.2; f[2] = 0.2; f[3] = 1;
     glMaterialfv (GL_FRONT, GL_SHININESS, f);
 }
 
@@ -32,10 +35,10 @@ void setaLuz(){
     glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 
     GLfloat light_ambient[] = { 0.0, 0.0, 0.0, 1.0 };
-    GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
-    GLfloat light_specular[] = { 0.2, 0.2, 0.2, 1.0 };
-    GLfloat light_position[] = { 0.0, 0.0, -4.0, 1.0 };
-    GLfloat spot_light_position[] = { 0.0, 0.0, 1.0, 1.0 };
+    GLfloat light_diffuse[] = { 0.5, 0.5, 0.5, 1.0 };
+    GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat light_position[] = {  luzX, luzY, luzZ, 1.0 };
+    GLfloat spot_light_position[] = { luzX, luzY, luzZ+5, 1.0 };
 
     glLightModelfv(GL_LIGHT_MODEL_AMBIENT, light_ambient);
     glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
@@ -79,14 +82,47 @@ void display()
 
     glPushMatrix();
 
+
+
     glRotated(ang,0,1,0);
     setaLuz();
 
 
-
     glColor3f(1,1,1);
 
-    glBegin(GL_POLYGON);
+    for(int i = 0; i < 50; i++){
+        for(int j = 0; j < 50; j++){
+            float px = i/50.0;
+            float py = j/50.0;
+
+            float parttex = 1/50.0;
+            float partpoly = 3/50.0;
+
+            //std::cout << " Parttex and poly " << parttex << " " << partpoly << std::endl;
+
+            float polyx = i*partpoly - 1.5;
+            float polyy = j*partpoly - 1.5;
+                glBegin(GL_POLYGON);
+
+                    glTexCoord2f(px,py);
+                    glNormal3f(0,0,-1);
+                    glVertex3f(polyx, polyy, 0);
+                    glNormal3f(0,0,-1);
+                    glTexCoord2f(px,py+parttex);
+                    glVertex3f(polyx,  polyy+partpoly, 0);
+                    glNormal3f(0,0,-1);
+                    glTexCoord2f(px+parttex,py+parttex);
+                    glVertex3f(polyx+partpoly,polyy+partpoly, 0);
+                    glNormal3f(0,0,-1);
+                    glTexCoord2f(px+parttex,py);
+                    glVertex3f(polyx+partpoly, polyy, 0);
+
+                    glEnd();
+        }
+    }
+
+    /*glBegin(GL_POLYGON);
+
     glTexCoord2f(0,0);
     glNormal3f(0,0,-1);
     glVertex3f(-1.5, -1.5, 0);
@@ -100,7 +136,7 @@ void display()
     glTexCoord2f(1,0);
     glVertex3f(1.5, -1.5, 0);
 
-    glEnd();
+    glEnd();*/
 
     setMaterial();
 
@@ -137,6 +173,9 @@ void display()
 
 void init()
 {
+    luzX = 0 ;
+    luzY = 0;
+    luzZ = -4;
     tex = loadTexture("l2.bmp");
     tex2 = loadTexture("s.bmp");
     tex_tanque = loadTexture("textura-tanque.bmp");
@@ -175,21 +214,47 @@ void update(int calbac){
 
 void keyboard(unsigned char key, int x, int y)
 {
+    //std::cout << "key " << (int)key << std::endl;
+
     switch(key) {
         case 'b':
         // call a function
         break;
         case 'w':
-            camerapos-=0.2;
+            camerapos-=0.1;
         break;
         case 's':
-            camerapos+=0.2;
+            camerapos+=0.1;
         break;
         case 'a':
             ang-=2;
         break;
         case 'd':
             ang+=2;
+        break;
+        case 'i':
+            luzY+=0.1;
+            std::cout << "luzy" << luzY << std::endl;
+        break;
+        case 'k':
+            luzY-=0.1;
+            std::cout << "luzy" << luzY << std::endl;
+        break;
+        case 'j':
+            luzX+=0.1;
+            std::cout << "luzx" << luzX << std::endl;
+        break;
+        case 'l':
+            luzX-=0.1;
+            std::cout << "luzx" << luzX << std::endl;
+        break;
+        case 'n':
+            luzZ+=0.1;
+            std::cout << "luzz" << luzZ << std::endl;
+        break;
+        case 'm':
+            luzZ-=0.1;
+            std::cout << "luzz" << luzZ << std::endl;
         break;
         default:
         break;
