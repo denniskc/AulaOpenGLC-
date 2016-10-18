@@ -60,7 +60,7 @@
 	"3dObject.h"
 	"GL/gl.h"
 
-1476227679 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\main.c
+1476826569 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\main.c
 	<windows.h>
 	"GL/glut.h"
 	"3DObject.h"
@@ -69,12 +69,12 @@
 	"glutil.h"
 	"ModelObj3d.h"
 
-1474417328 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\include\3dobject.h
+1474420928 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\include\3dobject.h
 
-1474417179 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\glutil.h
+1474420779 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\glutil.h
 	<stdio.h>
 
-1475620427 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\include\modelobj3d.h
+1476821843 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\include\modelobj3d.h
 	<stdio.h>
 	<cstdlib>
 	<iostream>
@@ -84,10 +84,10 @@
 	"3dObject.h"
 	"GL/gl.h"
 
-1475712692 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\src\3dobject.cpp
+1475716292 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\src\3dobject.cpp
 	"3dObject.h"
 	"GL/gl.h"
 
-1475629381 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\src\modelobj3d.cpp
+1476826491 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\src\modelobj3d.cpp
 	"ModelObj3d.h"
 

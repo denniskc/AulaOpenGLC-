@@ -18,7 +18,7 @@ typedef struct{
 } Face3D;
 
 typedef struct{
-	char *nome;
+	std::string nome;
 	int finicial;
 	int ffinal;
 	float size_group[3];
@@ -43,6 +43,10 @@ class ModelObj3d
         std::vector<Vector3f> vn;
         std::vector<Vector3f> vt;
         std::vector<Face3D> f;
+        std::vector<GrupoFaces *> g;
+
+        int lastgroupface;
+        GrupoFaces * opengroup;
 
         ModelObj3d();
         virtual ~ModelObj3d();
@@ -53,9 +57,13 @@ class ModelObj3d
         void decodeNormais(std::string str);
         void decodeTexturas(std::string str);
         void decodeFace(std::string str);
+        void decodeGroups(std::string str);
 
         void draw();
         void draw2();
+        void drawGroup(int index);
+        int getGroupSize();
+        std::string getGroupName(int index);
 
     protected:
 

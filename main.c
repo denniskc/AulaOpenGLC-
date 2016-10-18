@@ -148,7 +148,11 @@ void display()
         glBindTexture(GL_TEXTURE_2D, tex_tanque);
         setMaterial();
         glScalef(0.01f,0.01f,0.01f);
-        objfile->draw();
+        int gsize = objfile->getGroupSize();
+        for(int i = 0; i < gsize;i++){
+            std::cout << " GNAME " << objfile->getGroupName(i) << std::endl;
+            objfile->drawGroup(i);
+        }
     glPopMatrix();
         glPushMatrix();
         glBindTexture(GL_TEXTURE_2D, tex_tanque);

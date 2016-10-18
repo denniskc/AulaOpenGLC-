@@ -3,7 +3,11 @@
 
 ModelObj3d::ModelObj3d()
 {
-    //ctor
+    lastgroupface = 0;
+    //opengroup = (GrupoFaces *)malloc(sizeof(GrupoFaces));
+    //opengroup->finicial = lastgroupface;
+
+    opengroup = NULL;
 }
 
 ModelObj3d::~ModelObj3d()
@@ -49,10 +53,16 @@ void ModelObj3d::loadFile(const char * filename){
 
         found = sLine.find("g ");
         if(found!=std::string::npos){
-            //std::cout << "g" << std::endl;
+            decodeGroups(sLine);
         }
 
     }
+
+    std::cout << "Fechou" << std::endl;
+    lastgroupface = f.size();
+    opengroup->ffinal = lastgroupface-1;
+
+    g.push_back(opengroup);
 }
 
 void ModelObj3d::decodeVertice(std::string str){
@@ -83,7 +93,7 @@ void ModelObj3d::decodeNormais(std::string str){
 
         vn.push_back(vec);
 
-        std::cout << " Normais "<<vec.v[0] << " " << vec.v[1] << " " << vec.v[2] << std::endl;
+        //std::cout << " Normais "<<vec.v[0] << " " << vec.v[1] << " " << vec.v[2] << std::endl;
     }
 }
 
@@ -101,6 +111,28 @@ void ModelObj3d::decodeTexturas(std::string str){
 
         //std::cout << " Texturas "<< vec.v[0] << " " << vec.v[1] << " " << vec.v[2] << std::endl;
     }
+}
+
+void ModelObj3d::decodeGroups(std::string str){
+    int rsize = 0;
+    std::string *s = splitchar(str,' ',&rsize);
+
+    if(opengroup == NULL){
+        opengroup = (GrupoFaces *)malloc(sizeof(GrupoFaces));
+        std::cout << "ERA NUILL" << " " << opengroup << std::endl;
+    }else{
+        lastgroupface = f.size();
+        opengroup->ffinal = lastgroupface-1;
+        g.push_back(opengroup);
+
+        opengroup = (GrupoFaces *)malloc(sizeof(GrupoFaces));
+        std::cout << "Não ERA NUILL" << std::endl;
+    }
+
+    lastgroupface = f.size();
+    opengroup->finicial = lastgroupface;
+    opengroup->nome = s[1];
+    std::cout << " Fechow " << " " << lastgroupface << std::endl;
 }
 
 void ModelObj3d::decodeFace(std::string str){
@@ -122,7 +154,7 @@ void ModelObj3d::decodeFace(std::string str){
             ff.t[i] = std::atof(s2[1].c_str());
             ff.n[i] = std::atof(s2[2].c_str());
 
-            std::cout << ff.v[i] << " " << ff.n[i] << " " << ff.t[i] << std::endl;
+            //std::cout << ff.v[i] << " " << ff.n[i] << " " << ff.t[i] << std::endl;
         }
 
         f.push_back(ff);
@@ -233,4 +265,40 @@ std::string *ModelObj3d::splitchar(std::string input,char spchar, int *rsize){
     *rsize = (coutchar+1);
 
     return streturn;
+}
+
+void ModelObj3d::drawGroup(int index){
+    GrupoFaces *gupo = g.at(index);
+
+    std::vector<Face3D>::iterator inicio = f.begin();
+    std::advance(inicio,gupo->finicial);
+    std::vector<Face3D>::iterator ffinal = f.begin();
+    std::advance(ffinal,gupo->ffinal+1);
+
+    //std::cout << gupo->finicial << " " << gupo->ffinal << std::endl;
+
+    for(std::vector<Face3D>::iterator it = inicio; it != ffinal; ++it) {
+        Face3D ff = (*it);
+
+
+        glBegin(GL_POLYGON);
+            for(int i = 0; i < ff.nvertices; i++){
+                Vector3f vv = v.at(ff.v[i]-1);
+                Vector3f nn = vn.at(ff.n[i]-1);
+                Vector3f tt = vt.at(ff.t[i]-1);
+
+                glNormal3f(nn.v[0], nn.v[1], nn.v[2]);
+                //std::cout << "t " << tt.v[0] << " " << tt.v[1] << " " << (ff.t[i]-1) << std::endl;
+                glTexCoord2f(tt.v[0], tt.v[1]);
+                glVertex3f(vv.v[0], vv.v[1], vv.v[2]);
+            }
+
+        glEnd();
+    }
+}
+int ModelObj3d::getGroupSize(){
+    return g.size();
+}
+std::string ModelObj3d::getGroupName(int index){
+    return g.at(index)->nome;
 }
