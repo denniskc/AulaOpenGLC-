@@ -64,6 +64,7 @@ class ModelObj3d
         void drawGroup(int index);
         int getGroupSize();
         std::string getGroupName(int index);
+        void setaBoundBoxGrupo(int index);
 
     protected:
 

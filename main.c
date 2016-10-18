@@ -17,6 +17,9 @@ ModelObj3d *objfile;
 
 float luzX,luzY,luzZ;
 
+float angleturret = 0;
+float anglecannon = 0;
+
 void setMaterial(){
     float f[4];
     f[0] = 0.2; f[1] = 0.2; f[2] = 0.2; f[3] = 1;
@@ -90,7 +93,7 @@ void display()
 
     glColor3f(1,1,1);
 
-    for(int i = 0; i < 50; i++){
+    /*for(int i = 0; i < 50; i++){
         for(int j = 0; j < 50; j++){
             float px = i/50.0;
             float py = j/50.0;
@@ -119,7 +122,7 @@ void display()
 
                     glEnd();
         }
-    }
+    }*/
 
     /*glBegin(GL_POLYGON);
 
@@ -140,21 +143,34 @@ void display()
 
     setMaterial();
 
-    for(std::vector<gl3dObject *>::iterator it = listaDeObjetos.begin(); it != listaDeObjetos.end(); ++it) {
+    /*for(std::vector<gl3dObject *>::iterator it = listaDeObjetos.begin(); it != listaDeObjetos.end(); ++it) {
         (*it)->draw();
-    }
+    }*/
 
     glPushMatrix();
         glBindTexture(GL_TEXTURE_2D, tex_tanque);
         setMaterial();
         glScalef(0.01f,0.01f,0.01f);
+        objfile->drawGroup(2);
+            glPushMatrix();
+                glRotatef(angleturret,0,1,0);
+                objfile->drawGroup(0);
+                glPushMatrix();
+                    glTranslated(+14,+40,0);
+                    glRotatef(anglecannon,0,0,1);
+                    glTranslated(-14,-40,0);
+                    objfile->drawGroup(1),
+                glPopMatrix();
+            glPopMatrix();
+
+        /*
         int gsize = objfile->getGroupSize();
         for(int i = 0; i < gsize;i++){
             std::cout << " GNAME " << objfile->getGroupName(i) << std::endl;
             objfile->drawGroup(i);
-        }
+        }*/
     glPopMatrix();
-        glPushMatrix();
+    /*    glPushMatrix();
         glBindTexture(GL_TEXTURE_2D, tex_tanque);
         setMaterial();
         glTranslatef(2,0,0);
@@ -167,7 +183,7 @@ void display()
         glTranslatef(0,1.5f,0);
         glScalef(0.01f,0.01f,0.01f);
         objfile->draw();
-    glPopMatrix();
+    glPopMatrix();*/
 
     glPopMatrix();
 
@@ -259,6 +275,22 @@ void keyboard(unsigned char key, int x, int y)
         case 'm':
             luzZ-=0.1;
             std::cout << "luzz" << luzZ << std::endl;
+        break;
+        case 'z':
+            angleturret-=1;
+            std::cout << "angleturret " << angleturret << std::endl;
+        break;
+        case 'x':
+            angleturret+=1;
+            std::cout << "angleturret " << angleturret << std::endl;
+        break;
+        case 'c':
+            anglecannon-=1;
+            std::cout << "anglecannon " << anglecannon << std::endl;
+        break;
+        case 'v':
+            anglecannon+=1;
+            std::cout << "anglecannon " << anglecannon << std::endl;
         break;
         default:
         break;

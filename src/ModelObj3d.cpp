@@ -63,6 +63,11 @@ void ModelObj3d::loadFile(const char * filename){
     opengroup->ffinal = lastgroupface-1;
 
     g.push_back(opengroup);
+
+    int gsize = g.size();
+    for(int i = 0; i < gsize; i++){
+        setaBoundBoxGrupo(i);
+    }
 }
 
 void ModelObj3d::decodeVertice(std::string str){
@@ -118,14 +123,14 @@ void ModelObj3d::decodeGroups(std::string str){
     std::string *s = splitchar(str,' ',&rsize);
 
     if(opengroup == NULL){
-        opengroup = (GrupoFaces *)malloc(sizeof(GrupoFaces));
+        opengroup = (GrupoFaces *)calloc(1,sizeof(GrupoFaces));
         std::cout << "ERA NUILL" << " " << opengroup << std::endl;
     }else{
         lastgroupface = f.size();
         opengroup->ffinal = lastgroupface-1;
         g.push_back(opengroup);
 
-        opengroup = (GrupoFaces *)malloc(sizeof(GrupoFaces));
+        opengroup = (GrupoFaces *)calloc(1,sizeof(GrupoFaces));
         std::cout << "Não ERA NUILL" << std::endl;
     }
 
@@ -302,3 +307,60 @@ int ModelObj3d::getGroupSize(){
 std::string ModelObj3d::getGroupName(int index){
     return g.at(index)->nome;
 }
+
+void ModelObj3d::setaBoundBoxGrupo(int index){
+
+    GrupoFaces *gupo = g.at(index);
+    std::cout << "SETA BOUNDINBOX " << gupo->nome << " " << index << std::endl;
+
+    std::vector<Face3D>::iterator inicio = f.begin();
+    std::advance(inicio,gupo->finicial);
+    std::vector<Face3D>::iterator ffinal = f.begin();
+    std::advance(ffinal,gupo->ffinal+1);
+
+    Face3D face = (*inicio);
+
+    Vector3f vertice = v.at(face.v[0]-1);
+
+    gupo->menor[0] = vertice.v[0];
+    gupo->menor[1] = vertice.v[1];
+    gupo->menor[2] = vertice.v[2];
+    gupo->maior[0] = vertice.v[0];
+    gupo->maior[1] = vertice.v[1];
+    gupo->maior[2] = vertice.v[2];
+
+    for(std::vector<Face3D>::iterator it = inicio; it != ffinal; ++it) {
+        Face3D ff = (*it);
+            for(int i = 0; i < ff.nvertices; i++){
+                Vector3f vv = v.at(ff.v[i]-1);
+                if(vv.v[0]<gupo->menor[0]){
+                    gupo->menor[0] = vv.v[0];
+                }
+                if(vv.v[1]<gupo->menor[1]){
+                    gupo->menor[1] = vv.v[1];
+                }
+                if(vv.v[2]<gupo->menor[2]){
+                    gupo->menor[2] = vv.v[2];
+                }
+
+                if(vv.v[0]>gupo->maior[0]){
+                    gupo->maior[0] = vv.v[0];
+                }
+                if(vv.v[1]>gupo->maior[1]){
+                    gupo->maior[1] = vv.v[1];
+                }
+                if(vv.v[2]>gupo->maior[2]){
+                    gupo->maior[2] = vv.v[2];
+                }
+            }
+    }
+
+    gupo->size_group[0] =  gupo->maior[0]-gupo->menor[0];
+    gupo->size_group[1] =  gupo->maior[1]-gupo->menor[1];
+    gupo->size_group[2] =  gupo->maior[2]-gupo->menor[2];
+
+    std::cout << "Min " << gupo->menor[0] << " " << gupo->menor[1] << " " << gupo->menor[2] << std::endl;
+    std::cout << "Max " << gupo->maior[0] << " " << gupo->maior[1] << " " << gupo->maior[2] << std::endl;
+    std::cout << "Size " << gupo->size_group[0] << " " << gupo->size_group[1] << " " << gupo->size_group[2] << std::endl;
+}
+

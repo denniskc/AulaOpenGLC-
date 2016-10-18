@@ -60,7 +60,7 @@
 	"3dObject.h"
 	"GL/gl.h"
 
-1476826569 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\main.c
+1476829990 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\main.c
 	<windows.h>
 	"GL/glut.h"
 	"3DObject.h"
@@ -74,7 +74,7 @@
 1474420779 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\glutil.h
 	<stdio.h>
 
-1476821843 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\include\modelobj3d.h
+1476830629 c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\include\modelobj3d.h
 	<stdio.h>
 	<cstdlib>
 	<iostream>
@@ -88,6 +88,6 @@
 	"3dObject.h"
 	"GL/gl.h"
 
-1476826491 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\src\modelobj3d.cpp
+1476831343 source:c:\users\dennis\dropbox (palmsoft)\disciplinas\disciplina computação grafica - cco\20162\workc++\openglaula2-objfile\src\modelobj3d.cpp
 	"ModelObj3d.h"
 
