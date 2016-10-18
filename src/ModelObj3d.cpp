@@ -123,14 +123,14 @@ void ModelObj3d::decodeGroups(std::string str){
     std::string *s = splitchar(str,' ',&rsize);
 
     if(opengroup == NULL){
-        opengroup = (GrupoFaces *)calloc(1,sizeof(GrupoFaces));
+        opengroup = new GrupoFaces;
         std::cout << "ERA NUILL" << " " << opengroup << std::endl;
     }else{
         lastgroupface = f.size();
         opengroup->ffinal = lastgroupface-1;
         g.push_back(opengroup);
 
-        opengroup = (GrupoFaces *)calloc(1,sizeof(GrupoFaces));
+        opengroup = new GrupoFaces;
         std::cout << "Não ERA NUILL" << std::endl;
     }
 
